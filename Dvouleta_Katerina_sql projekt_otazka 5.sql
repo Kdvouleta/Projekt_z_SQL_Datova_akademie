@@ -76,20 +76,11 @@ AND prev_wage IS NOT NULL
 AND prev_price IS NOT NULL
 ORDER BY year;
 
--- odpověď 5 - z tabulky je videt, že ve většině let, kdy HDB rostlo, rostly také mzdy
--- růst mezd byl poměrně stabilní i v letech, kdy bylo tempo růstu HDP nižší 
--- u cen potravin je vývoj výrazně kolísavější a přímá vazba na HDP není tak dobře patrná
--- Vliv HDP na mzdy je dle dat viditelnější než vliv HDP na ceny potravin 
--- Při růstu HDP většinou rostly také mzdy, ale neplatí to jako přesná nebo okamžitá závislost pro každý rok. 
--- U cen potravin je vztah k HDP ještě slabší, protože jejich vývoj je zjevně ovlivněn i dalšími faktory. 
 
 -- Odpověď na otázku č. 5 - Na základě jednoduchého meziročního porovnání nelze prokázat přímý vliv HDP na mzdy a ceny potravin. 
 -- Data naznačují, že růst HDP je častěji doprovázen růstem mezd, ale vztah není jednoznačný. 
 -- U cen potravin je souvislost ještě méně patrná.
 
--- růst HDP v ČR byl ve sledovaném období častěji doprovázen růstem mezd. Tato souvislost je patrnější než u cen potravin.
--- u cen potravin se přímý vztah k HDP nepotvrdil jednoznačně, protože jejich meziroční vývoj byl výrazně kolísavější. 
--- lze tedy říci, že HDP má na mzdy pravděpodobně silnější vazbu než na ceny potravin, avšak se nejedná o zcela přímou závislost.
 
 
 
