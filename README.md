@@ -53,7 +53,7 @@ Z toho plyne, že kupní síla mezi sledovanými obdobími se s ohledem na obě 
 
 Otázka č. 3 - Která kategorie potravin zdražuje nejpomaleji (je u ní nejnižší percentuální meziroční nárůst)?
 
-Nejpomaleji zdražovalo zboží Cukr krystalový (s kódem 118101), u které vyšel průměrný meziroční procentní růst -1,92%. To znamená, že jeho cena v průměru meziročně klesala.
+Nejpomaleji zdražovalo zboží Cukr krystalový (s kódem 118101), u kterého vyšel průměrný meziroční procentní růst -1,92%. To znamená, že jeho cena v průměru meziročně klesala.
 
 Otázka č. 4 - Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?
 
