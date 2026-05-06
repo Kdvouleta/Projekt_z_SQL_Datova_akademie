@@ -7,69 +7,69 @@
 
 WITH wages_unique AS (
 SELECT DISTINCT
-year,
-industry_branch_code,
-industry_name,
-avg_wage
+    year,
+    industry_branch_code,
+    industry_name,
+    avg_wage
 FROM t_katerina_dvouleta_project_sql_primary_final
 ),
-prices_unique AS (
+    prices_unique AS (
 SELECT DISTINCT
-year,
-category_code,
-category_name,
-avg_price
+    year,
+    category_code,
+    category_name,
+    avg_price
 FROM t_katerina_dvouleta_project_sql_primary_final
 ),
-yearly_wages AS (
+    yearly_wages AS (
 SELECT
-year,
-ROUND(AVG(avg_wage), 2) AS avg_year_wage
+    year,
+    ROUND(AVG(avg_wage), 2) AS avg_year_wage
 FROM wages_unique
 GROUP BY year
 ),
-yearly_prices AS (
+    yearly_prices AS (
 SELECT
-year,
-ROUND(AVG(avg_price)::numeric, 2) AS avg_year_price
+    year,
+    ROUND(AVG(avg_price)::numeric, 2) AS avg_year_price
 FROM prices_unique
 GROUP BY year
 ),
-czech_gdp AS (
+    czech_gdp AS (
 SELECT
-year,
-gdp
+    year,
+    gdp
 FROM t_katerina_dvouleta_project_sql_secondary_final
 WHERE country IN ('Czech Republic', 'Czechia')
 ),
-combined AS (
+    combined AS (
 SELECT
-w.year,
-g.gdp,
-w.avg_year_wage,
-p.avg_year_price
+    w.year,
+    g.gdp,
+    w.avg_year_wage,
+    p.avg_year_price
 FROM yearly_wages w
 JOIN yearly_prices p
-ON w.year = p.year
+    ON w.year = p.year
 JOIN czech_gdp g
-ON w.year = g.year
+    ON w.year = g.year
 ),
-growths AS (
+    growths AS (
 SELECT
-year,
-gdp,
-avg_year_wage,
-avg_year_price,
-LAG(gdp) OVER (ORDER BY year) AS prev_gdp,
-LAG(avg_year_wage) OVER (ORDER BY year) AS prev_wage,
-LAG(avg_year_price) OVER (ORDER BY year) AS prev_price
+    year,
+    gdp,
+    avg_year_wage,
+    avg_year_price,
+    LAG(gdp) OVER (ORDER BY year) AS prev_gdp,
+    LAG(avg_year_wage) OVER (ORDER BY year) AS prev_wage,
+    LAG(avg_year_price) OVER (ORDER BY year) AS prev_price
 FROM combined
 )
 SELECT
-year,
-ROUND(((gdp - prev_gdp) / prev_gdp * 100)::numeric, 2) AS gdp_growth_pct,
-ROUND(((avg_year_wage - prev_wage) / prev_wage * 100)::numeric, 2) AS wage_growth_pct,
-ROUND(((avg_year_price - prev_price) / prev_price * 100)::numeric, 2) AS food_price_growth_pct
+    year,
+    ROUND(((gdp - prev_gdp) / prev_gdp * 100)::numeric, 2) AS gdp_growth_pct,
+    ROUND(((avg_year_wage - prev_wage) / prev_wage * 100)::numeric, 2) AS wage_growth_pct,
+    ROUND(((avg_year_price - prev_price) / prev_price * 100)::numeric, 2) AS food_price_growth_pct
 FROM growths
 WHERE prev_gdp IS NOT NULL
 AND prev_wage IS NOT NULL
